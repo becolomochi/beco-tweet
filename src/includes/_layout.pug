@@ -4,7 +4,8 @@ html(lang=pageLang)
   head
     include _meta
   body
-    include _header
-    block content
-    include _footer
+    .wrapper
+      include _header
+      block content
+      include _footer
     include _script
