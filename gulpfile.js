@@ -5,7 +5,7 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
 const input = 'src'
-const output = 'dist';
+const output = 'docs';
 
 gulp.task('serve', ['js', 'sass', 'pug'], function() {
   browserSync.init({
