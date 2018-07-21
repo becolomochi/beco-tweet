@@ -4,6 +4,7 @@ var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
+var plumber = require('gulp-plumber');
 
 const input = 'src'
 const output = 'docs';
@@ -19,6 +20,7 @@ gulp.task('serve', ['js', 'sass', 'pug'], function() {
 
 gulp.task('js', function() {
   return gulp.src(input + '/js/**/[^_]*.js')
+      .pipe(plumber())
       .pipe(babel({
         presets: ['env']
       }))
@@ -29,6 +31,7 @@ gulp.task('js', function() {
 
 gulp.task('sass', function() {
   return gulp.src(input + '/scss/**/[^_]*.scss')
+      .pipe(plumber())
       .pipe(sass())
       .pipe(gulp.dest(output + '/css'))
       .pipe(browserSync.stream());
