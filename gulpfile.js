@@ -3,6 +3,7 @@ var pug = require('gulp-pug');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
 
 const input = 'src'
 const output = 'docs';
@@ -18,6 +19,9 @@ gulp.task('serve', ['js', 'sass', 'pug'], function() {
 
 gulp.task('js', function() {
   return gulp.src(input + '/js/**/[^_]*.js')
+      .pipe(babel({
+        presets: ['env']
+      }))
       .pipe(uglify())
       .pipe(gulp.dest(output + '/js'))
       .pipe(browserSync.stream());
