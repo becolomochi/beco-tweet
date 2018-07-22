@@ -1,8 +1,8 @@
+'use strict';
 (function () {
-  'use strict';
   const tweetBtn = document.getElementById("tweet-btn");
   const tweetDivided = document.getElementById('tweet-area');
-
+  
   /**
    * 指定した要素の子どもをすべて除去する
    * @param {HTMLElement} element HTMLの要素
