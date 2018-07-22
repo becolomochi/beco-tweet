@@ -11,6 +11,8 @@ var sourcemaps = require('gulp-sourcemaps');
 const input = 'src'
 const output = 'docs';
 
+gulp.task('build', ['js', 'sass', 'pug', 'iconcopy']);
+
 gulp.task('serve', ['js', 'sass', 'pug'], function() {
   browserSync.init({
     server: './' + output
@@ -48,6 +50,12 @@ gulp.task('pug', function() {
   .pipe(pug())
   .pipe(gulp.dest(output + '/'))
   .pipe(browserSync.stream());
+});
+
+gulp.task('iconcopy', function() {
+  return gulp.src(input + '/favicon.ico')
+    .pipe(gulp.dest(output + '/'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('default', ['serve']);
